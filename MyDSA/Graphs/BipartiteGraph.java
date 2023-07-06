@@ -1,6 +1,9 @@
 class Solution {
     public boolean isBipartite(int[][] graph) {
         // As we may have disconnected componenet we need to travel over all the unvisited component 
+        // Time Complexity -> O(n) As each node is exactly visited once.
+        // Space Complexity -> O(n) -> For levels array and as we are creating a queue also so at max we can store all neighbours at once so it can also take o(n) space
+        // so the total space we are taking is o(n + n)
         int [] levels = new int[graph.length];
         Arrays.fill(levels, -1);
         for(int i  = 0; i < graph.length; i++){
