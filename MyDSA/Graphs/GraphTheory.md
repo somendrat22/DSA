@@ -9,4 +9,16 @@
    4. It ia ascylcic graph.
    5. Spanning : In spanning we have to choose all vertices but we can leave some edges
    6. So Minimum Spanning Tree is a graph where all the vertices are connected indirectly or directly and over all weight o the graph is minimum.
+
+# Kruksal Algorithm 
+   1. This algo is used to form Minimum Spanning Tree using DSU.
+   2. First we have to arrange all the edges in the terms of wieghts. Then Sort the array.
+   3. After Sorting we have to apply DSU. By applying DSU we will be able to acheieve Tree Property.
+   4. Kruksal'S algorithm will fail in Directed Graph.
+   5. In Kruskal’s algorithm, In each step, it is checked that if the edges form a cycle with the spanning-tree formed so far. But Kruskal’s algorithm fails to 
+      detect the cycles in a directed graph as there are cases when there is no cycle between the vertices but Kruskal’s Algorithm assumes it to cycle and don’t take 
+      consider some edges due to which Kruskal’s Algorithm fails for directed graph.
+   6. ![image](https://github.com/somendrat22/DSA1/assets/49708374/6bd44607-6d9c-4fad-a35e-de5001413844)
+
+
       
