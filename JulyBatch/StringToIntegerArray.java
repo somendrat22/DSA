@@ -28,6 +28,24 @@ public class Main {
 		
     }
 
+//######################################################### Approach 2 ##########################################################################
+
+	static ArrayList<Integer> arrayGenerator(String s){
+
+		ArrayList<Integer> res = new ArrayList<>();
+
+		String [] nums = s.split(",");
+
+		for(int i = 0; i < nums.length;  i++){
+			int n = Integer.parseInt(nums[i]);
+			res.add(n);
+
+		}
+
+		return res;
+		
+    }
+
     public static void main(String args[]) {
         Scanner input = new Scanner(System.in);
         int t = input.nextInt();
