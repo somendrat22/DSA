@@ -32,6 +32,8 @@ class Solution{
 		}
 	}
     public void evaluate(String exp){
+
+		// Evaluation 
         Stack<Integer> oprand = new Stack<>(); // digit
 		Stack<Character> opr = new Stack<>(); //
 
@@ -81,5 +83,72 @@ class Solution{
 		}
 
 		System.out.println(oprand.pop());
+
+
+
+		// Conversion
+		opr = new Stack<>();
+		Stack<String> prefix = new Stack<>();
+		Stack<String> postfix = new Stack<>();
+
+		for(int i = 0; i < exp.length(); i++){
+			char ch = exp.charAt(i);
+			if(ch >= '0' && ch <= '9'){
+				prefix.push(ch + ""); // 'a' + "" -> "a"
+				postfix.push(ch + "");
+			}else if(ch == '('){
+				opr.push('(');
+			}else if(ch  == '+' || ch == '-' || ch == '*' || ch == '/'){
+				while(opr.size() > 0 && opr.peek() != '(' && priority(opr.peek()) >= priority(ch)){
+					char opreator = opr.pop();
+					String val2 = prefix.pop();
+					String val1 = prefix.pop();
+					String prefixValue = opreator + val1 + val2; 
+					prefix.push(prefixValue);
+
+					String val2Post = postfix.pop();
+					String val1Post = postfix.pop();
+					String postfixValue = val1Post + val2Post + opreator;
+					postfix.push(postfixValue);
+				}
+				opr.push(ch);
+			
+		}else if(ch  == ')'){
+
+			while(opr.size() > 0 && opr.peek() != '('){
+					char opreator = opr.pop();
+					String val2 = prefix.pop();
+					String val1 = prefix.pop();
+					String prefixValue = opreator + val1 + val2; 
+					prefix.push(prefixValue);
+
+					String val2Post = postfix.pop();
+					String val1Post = postfix.pop();
+					String postfixValue = val1Post + val2Post + opreator;
+					postfix.push(postfixValue);
+				}
+
+				if(opr.size() > 0){
+					opr.pop();
+				}
+
+		}
     }
+
+	 while(opr.size() != 0){
+		 char opreator = opr.pop();
+		 String val2 = prefix.pop();
+		 String val1 = prefix.pop();
+		 String prefixValue = opreator + val1 + val2; 
+	     prefix.push(prefixValue);
+
+		String val2Post = postfix.pop();
+		String val1Post = postfix.pop();
+		String postfixValue = val1Post + val2Post + opreator;
+		postfix.push(postfixValue);
+	 }
+
+	System.out.println(postfix.pop());
+	System.out.println(prefix.pop());
+	}
 }               
