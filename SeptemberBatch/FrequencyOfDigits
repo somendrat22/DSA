@@ -1,0 +1,28 @@
+import java.util.*;
+
+public class Main {
+
+
+	
+   
+
+   static int FrequencyofDigits(long n, int d) {
+	  int count = 0;
+       while(n != 0){
+		   long rem = n%10;
+		   long q = n/10;
+		   if(rem == (long)d){
+			   count++;
+		   }
+		   n = q;
+	   }
+		return count;
+    }
+
+	 public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        long n = sc.nextLong();
+        int d = sc.nextInt();
+        System.out.println(FrequencyofDigits(n, d));
+    }
+}
