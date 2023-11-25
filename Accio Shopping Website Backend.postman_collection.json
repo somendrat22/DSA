@@ -1,0 +1,230 @@
+{
+	"info": {
+		"_postman_id": "7a621b80-b344-4f22-8818-13718bb276d6",
+		"name": "Accio Shopping Website Backend",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "17476367",
+		"_collection_link": "https://speeding-zodiac-801217.postman.co/workspace/Team-Workspace~90747765-adca-4802-8250-528e15c391c5/collection/17476367-7a621b80-b344-4f22-8818-13718bb276d6?action=share&source=collection_link&creator=17476367"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userName\" : \"\",\r\n    \"password\" : \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8083/api/login"
+			},
+			"response": []
+		},
+		{
+			"name": "SignUp",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userName\" : \"Somendra\",\r\n    \"password\" : \"123456\",\r\n    \"email\" : \"tiwarisomendra22@gmail.com\",\r\n    \"phoneNumber\" : 9319277275,\r\n    \"Address\" : \"Gurgoan\",\r\n    \"Role\" : \"User\" \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8083/api/signup"
+			},
+			"response": []
+		},
+		{
+			"name": "Add Product",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"productName\" : \"JimJam\",\r\n    \"category\" : \"Biscuit\", \r\n    \"description\" : \"Cream Biscuits\",\r\n    \"quantity\" : 100, \r\n    \"price\" : 20,\r\n    \"userName\" : \"ggg\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8083/api/admin/product/add"
+			},
+			"response": []
+		},
+		{
+			"name": "Approve Admin",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "See All products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8083/api/admin/product?userName=Somendra",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"admin",
+						"product"
+					],
+					"query": [
+						{
+							"key": "userName",
+							"value": "Somendra"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Product in cart",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8083/api/user/4?pid=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"user",
+						"4"
+					],
+					"query": [
+						{
+							"key": "pid",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Show Cart",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8083/api/user/showcart?uid=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"user",
+						"showcart"
+					],
+					"query": [
+						{
+							"key": "uid",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Place Order",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"products\" : [1, 3, 4], \r\n    \"userName\" : \"Somendra\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8083/api/user/placeorder"
+			},
+			"response": []
+		},
+		{
+			"name": "All Orders",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8083/api/order/10/allorders"
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Orders By Prefrence",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8083/api/order/2/allorders/prefrence?deliveryPrefrence=Not_Delivered",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"order",
+						"2",
+						"allorders",
+						"prefrence"
+					],
+					"query": [
+						{
+							"key": "deliveryPrefrence",
+							"value": "Not_Delivered"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cancel Order",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "http://localhost:8083/api/orders/3/cancelorder/8"
+			},
+			"response": []
+		}
+	]
+}
