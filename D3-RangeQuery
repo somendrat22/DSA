@@ -1,0 +1,52 @@
+import java.util.*;
+
+class Solution {
+        public int[] sumQuery(int[] arr, int[][] queries) {
+            int [] prefixSum = new int[arr.length];
+            for(int i = 0; i < arr.length; i++){
+                if(i == 0){
+                    prefixSum[i] = arr[i];
+                }else{
+                    prefixSum[i] = prefixSum[i - 1] + arr[i];
+                }
+            }
+            // After this loop you will have your prefixsum array
+            int [] res = new int[queries.length];
+            for(int i  = 0; i < queries.length; i++){
+                int [] query = queries[i];
+                int leftLimit = query[0];
+                int rightLimit = query[1];
+                // prefixSum array 
+                int sum = 0;
+                if(leftLimit == 0){
+                    sum = prefixSum[rightLimit];
+                }else{
+                    sum = prefixSum[rightLimit] - prefixSum[leftLimit - 1];
+                }
+                res[i] = sum;
+            }
+            return res;
+        }
+}
+
+public class Main {
+     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n;
+        n = sc.nextInt();
+        int arr[] = new int[n];
+        for (int i = 0; i < n; i++)
+            arr[i] = sc.nextInt();
+        int m;
+        m = sc.nextInt();
+        int[][] ranges = new int[m][2];
+        for(int i = 0; i < m; i++) {
+            ranges[i][0] = sc.nextInt();
+            ranges[i][1] = sc.nextInt();
+        }
+        Solution Obj = new Solution();
+        int[] ans = Obj.sumQuery(arr, ranges);
+        for(int i =0; i< ans.length; i++)
+            System.out.print(ans[i] + " ");
+    }
+}
