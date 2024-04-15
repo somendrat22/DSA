@@ -1,0 +1,46 @@
+import java.util.*;
+
+class Solution {
+
+    public long solve(int grid[][]) {
+        int n = grid[0].length;
+        for(int i = 1; i < grid[0].length; i++){
+            grid[0][i] = grid[0][i] + grid[0][i -1];
+            grid[1][i] = grid[1][i] + grid[1][i -1];
+        }
+        long r2 = Integer.MAX_VALUE;
+        for(int i = 0; i < grid[0].length; i++){
+            long val = 0;
+            if(i > 0){
+                val = grid[1][i - 1];
+            }
+            long robot1 = grid[0][i] + (grid[1][n - 1] - val);
+            long robot2Right = grid[0][n-1] -  grid[0][i];
+            long robot2Down = val;
+            long robot2 = Math.max(robot2Right, robot2Down);
+            r2 = Math.min(r2, robot2);
+        }
+        return r2;
+        
+    }
+}
+
+class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+
+        int grid[][]=new int[2][n];
+        for(int i=0;i<2;i++)
+        {
+            for(int j=0;j<n;j++)
+                grid[i][j]=sc.nextInt();
+
+        }
+        
+        Solution obj=new Solution();
+        System.out.println(obj.solve(grid));
+        sc.close();
+    }
+}
