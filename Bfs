@@ -1,0 +1,71 @@
+import java.util.*;
+import java.io.*;
+ 
+class Graph {
+    public int vertices;
+    public ArrayList<Integer>[] adjList;
+
+    public class Pair{
+        int vtx;
+        String psf;
+        Pair(int vtx, String psf){
+            this.vtx = vtx;
+            this.psf = psf;
+        }
+    }
+    
+    Graph(int v) {
+        this.vertices = v+1;
+        adjList = new ArrayList[v+1];
+        
+        for (int i = 0; i <= v; i++) adjList[i] = new ArrayList<Integer>();
+    }
+ 
+    void addEdge(int v, int w) {
+        adjList[v].add(w);
+     
+    }
+ 
+    void BFS(int x) {
+        LinkedList<Pair> q = new LinkedList<>();
+        boolean [] visited = new boolean[adjList.length];
+        // 0 as the source vtx 
+        // dest -> graph.length - 1;
+        int src = 0;
+        int dest = adjList.length - 1;
+        q.addLast(new Pair(src, "" + src));
+        while(q.size() > 0){
+           int levelSize = q.size();
+           while(levelSize-- > 0){
+               Pair rem = q.removeFirst();
+               if(visited[rem.vtx] == true){
+                   continue;
+               }
+               visited[rem.vtx] = true;
+               ArrayList<Integer> nbrs = adjList[rem.vtx];
+               for(int i  = 0; i < nbrs.size(); i++){
+                   int nbr = nbrs.get(i);
+                   if(visited[nbr] == false){
+                       q.addLast(new Pair(nbr, rem.psf + nbr));
+                   }
+               }
+           }›
+        }
+    }
+}
+ 
+public class Main {
+    public static void main(String args[]) {
+        
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int e = sc.nextInt();
+        Graph g = new Graph(110);
+        for(int i =0;i<e;i++){
+            int x = sc.nextInt();
+            int y = sc.nextInt();
+            g.addEdge(x,y);
+        }
+        g.BFS(0);
+    }
+}
